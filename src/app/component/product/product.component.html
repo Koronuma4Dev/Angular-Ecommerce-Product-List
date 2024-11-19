@@ -1,0 +1,93 @@
+<style>
+
+.product-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 1.5rem; 
+  padding: 1rem;
+}
+
+
+.product-item {
+  display: flex;
+  flex-direction: column; 
+  justify-content: space-between;
+  align-items: center; 
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  background-color: #f2e8cf;
+  transition: transform 0.3s ease;
+}
+
+.product-item h3 {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
+
+.product-item p {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+}
+
+.product-item button {
+  background-color: #3a5a40;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.product-item button:hover {
+  background-color: #dad7cd;
+  color: #000;
+}
+
+.product-item:hover {
+  transform: scale(1.05); 
+}
+
+@media (max-width: 1024px) {
+  .product-list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .product-list {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+@media (max-width: 480px) {
+  .product-list {
+    grid-template-columns: 1fr; 
+  }
+
+  .product-item {
+    padding: 0.8rem;
+  }
+
+  .product-item h3 {
+    font-size: 1rem;
+  }
+
+  .product-item p {
+    font-size: 0.9rem;
+  }
+}
+
+  
+</style>
+  
+  <div class="product-list">
+    <div class="product-item" *ngFor="let product of products">
+      <h3>{{ product.name }}</h3>
+      <p>Price: ₱{{ product.price }}</p>
+      <button (click)="addToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+  
